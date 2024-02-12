@@ -3,9 +3,11 @@ package com.ljelectrar.proxy;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.ljelectrar.model.PatchUserRequest;
 import com.ljelectrar.model.User;
 
 @Component
@@ -30,6 +32,11 @@ public class UserProxy {
 
 	public void delete(String id) {
 		restTemplate.delete(url + "v1/{id}", Map.of("id", id));
+	}
+
+	public void update(String id, HttpEntity<PatchUserRequest> request) {
+		restTemplate.patchForObject(url + "v1/{id}", request, Void.class, Map.of("id", id));
+		
 	}
 	
 }
