@@ -1,5 +1,7 @@
 package com.ljelectrar.proxy;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -23,8 +25,11 @@ public class UserProxy {
 	}
 
 	public void create(User user) {
-		// TODO Auto-generated method stub
-		
+		restTemplate.postForObject(url + "v1", user, User.class);
+	}
+
+	public void delete(String id) {
+		restTemplate.delete(url + "v1/{id}", Map.of("id", id));
 	}
 	
 }
