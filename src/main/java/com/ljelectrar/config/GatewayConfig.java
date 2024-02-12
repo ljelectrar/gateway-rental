@@ -9,6 +9,9 @@ import org.springframework.web.client.RestTemplate;
 @Configuration
 public class GatewayConfig {
 	
+	// Default rest template does not support the PATCH Request
+	// We have to include Apache HTTP client
+	
 	@Bean
 	RestTemplate getTemplate() {
 		var restTemplate = new RestTemplate();
