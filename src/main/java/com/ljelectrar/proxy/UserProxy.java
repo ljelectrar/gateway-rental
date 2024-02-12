@@ -21,5 +21,10 @@ public class UserProxy {
 	public User[] getUsers() {
 		return restTemplate.getForObject(url + "v1", User[].class);
 	}
+
+	public void create(User user) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }
